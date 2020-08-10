@@ -48,8 +48,11 @@ describe('Community Templates', () => {
     cy.getByTestID('notification-error').should('be.visible')
   })
 
-  it('Can install from CLI', () => {
-    //shows file link in source
+  it.skip('Can install from CLI', () => {
+    //authorization is preventing this from working
+    cy.exec('go run ../cmd/influx apply -t eiDTSTOZ_WAgLfw9eK5_JUsVnqeIYWWBY2QHXe6KC-UneLThJBGveTMm8k6_W1cAmswzLEKJTPeqoirvHH5kQg==  -f pkger/testdata/variables.yml').then((result) => {
+    })
+
   })
 
   it('Simple Download', () => {
@@ -156,7 +159,7 @@ describe('Community Templates', () => {
       cy.getByTestID('installed-template-list').should('have', '2')
     })
 
-    it('Can click on template resources', () => {
+    it.only('Can click on template resources', () => {
       //button
       // cy.getByTestID('template-resource-link-Buckets')
     })
