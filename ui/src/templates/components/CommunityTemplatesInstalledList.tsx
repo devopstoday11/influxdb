@@ -238,8 +238,13 @@ class CommunityTemplatesInstalledListUnconnected extends PureComponent<Props> {
           <Table.Body>
             {this.props.stacks.map(stack => {
               return (
-                <Table.Row testID="installed-template-list" key={`stack-${stack.id}`}>
-                  <Table.Cell testID={`installed-template-${stack.name}`}>{stack.name}</Table.Cell>
+                <Table.Row
+                  testID="installed-template-list"
+                  key={`stack-${stack.id}`}
+                >
+                  <Table.Cell testID={`installed-template-${stack.name}`}>
+                    {stack.name}
+                  </Table.Cell>
                   <Table.Cell testID={`template-resource-link`}>
                     {this.renderStackResources(stack.resources)}
                   </Table.Cell>

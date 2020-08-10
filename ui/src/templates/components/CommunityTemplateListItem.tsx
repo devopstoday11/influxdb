@@ -42,7 +42,7 @@ const CommunityTemplateListItem: FC<Props> = ({
   )
 
   return (
-    <Panel className="community-templates--item" >
+    <Panel className="community-templates--item">
       <Panel.Body
         size={ComponentSize.ExtraSmall}
         alignItems={AlignItems.Center}
