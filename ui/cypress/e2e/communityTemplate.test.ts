@@ -11,8 +11,7 @@ describe('Community Templates', () => {
       cy.fixture('routes').then(({orgs}) => {
         cy.visit(`${orgs}/${id}/settings/templates`)
       })
-
-      cy.getByTestID('browse-template-button').should('be.visible')
+      
     })
   })
 
@@ -27,9 +26,7 @@ describe('Community Templates', () => {
 
   it('The lookup template errors on invalid data', () => {
     //on empty
-    cy.getByTestID('lookup-template-button')
-      .should()
-      .click()
+    cy.getByTestID('lookup-template-button').click()
     cy.getByTestID('notification-error').should('be.visible')
 
     //lookup template errors on bad url
