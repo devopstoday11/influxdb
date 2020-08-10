@@ -1,4 +1,3 @@
-
 describe('Community Templates', () => {
   beforeEach(() => {
     cy.flush()
@@ -28,7 +27,9 @@ describe('Community Templates', () => {
 
   it('The lookup template errors on invalid data', () => {
     //on empty
-    cy.getByTestID('lookup-template-button').should().click()
+    cy.getByTestID('lookup-template-button')
+      .should()
+      .click()
     cy.getByTestID('notification-error').should('be.visible')
 
     //lookup template errors on bad url
@@ -55,7 +56,9 @@ describe('Community Templates', () => {
     //authorization is preventing this from working
     cy.exec(
       'go run ../cmd/influx apply -t eiDTSTOZ_WAgLfw9eK5_JUsVnqeIYWWBY2QHXe6KC-UneLThJBGveTMm8k6_W1cAmswzLEKJTPeqoirvHH5kQg==  -f pkger/testdata/variables.yml'
-    ).then(result => {result})
+    ).then(result => {
+      result
+    })
   })
 
   it('Simple Download', () => {
