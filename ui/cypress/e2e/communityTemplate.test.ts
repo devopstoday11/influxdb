@@ -1,3 +1,5 @@
+import { createYield } from "typescript"
+
 describe('Community Templates', () => {
   beforeEach(() => {
     cy.flush()
@@ -16,6 +18,7 @@ describe('Community Templates', () => {
 
   it('The browse community template button launches github', () => {
     cy.getByTestID('browse-template-button')
+      .should('should', 'be.visible')
       .should('have.prop', 'href')
       .and(
         'equal',

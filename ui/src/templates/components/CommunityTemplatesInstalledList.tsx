@@ -245,7 +245,7 @@ class CommunityTemplatesInstalledListUnconnected extends PureComponent<Props> {
                   <Table.Cell testID={`installed-template-${stack.name}`}>
                     {stack.name}
                   </Table.Cell>
-                  <Table.Cell testID={`template-resource-link`}>
+                  <Table.Cell testID="template-resource-link">
                     {this.renderStackResources(stack.resources)}
                   </Table.Cell>
                   <Table.Cell>
