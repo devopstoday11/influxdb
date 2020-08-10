@@ -240,7 +240,7 @@ class CommunityTemplatesInstalledListUnconnected extends PureComponent<Props> {
               return (
                 <Table.Row testID="installed-template-list" key={`stack-${stack.id}`}>
                   <Table.Cell testID={`installed-template-${stack.name}`}>{stack.name}</Table.Cell>
-                  <Table.Cell testID={`template-resource-link-${stack.resources}`}>
+                  <Table.Cell testID={`template-resource-link`}>
                     {this.renderStackResources(stack.resources)}
                   </Table.Cell>
                   <Table.Cell>

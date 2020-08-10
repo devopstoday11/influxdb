@@ -50,9 +50,9 @@ describe('Community Templates', () => {
 
   it.skip('Can install from CLI', () => {
     //authorization is preventing this from working
-    cy.exec('go run ../cmd/influx apply -t eiDTSTOZ_WAgLfw9eK5_JUsVnqeIYWWBY2QHXe6KC-UneLThJBGveTMm8k6_W1cAmswzLEKJTPeqoirvHH5kQg==  -f pkger/testdata/variables.yml').then((result) => {
-    })
-
+    cy.exec(
+      'go run ../cmd/influx apply -t eiDTSTOZ_WAgLfw9eK5_JUsVnqeIYWWBY2QHXe6KC-UneLThJBGveTMm8k6_W1cAmswzLEKJTPeqoirvHH5kQg==  -f pkger/testdata/variables.yml'
+    ).then(result => {})
   })
 
   it('Simple Download', () => {
@@ -65,16 +65,11 @@ describe('Community Templates', () => {
 
     //check that with 1 resource pluralization is correct
     cy.getByTestID('template-install-title').should('contain', 'resource')
-    cy.getByTestID('template-install-title').should(
-      'not.contain',
-      'resources'
-    )
+    cy.getByTestID('template-install-title').should('not.contain', 'resources')
 
     //check that no resources check lead to disabled install button
     cy.getByTestID('heading-Dashboards').click()
-    cy.getByTestID('templates-toggle--Downsampling Status').should(
-      'be.visible'
-    )
+    cy.getByTestID('templates-toggle--Downsampling Status').should('be.visible')
     cy.getByTestID('template-install-button').should('exist')
     cy.getByTestID('templates-toggle--Downsampling Status').click()
     cy.getByTestID('template-install-button').should('not.exist')
@@ -159,9 +154,62 @@ describe('Community Templates', () => {
       cy.getByTestID('installed-template-list').should('have', '2')
     })
 
-    it.only('Can click on template resources', () => {
-      //button
-      // cy.getByTestID('template-resource-link-Buckets')
+    it('Can click on template resources', () => {
+      //buckets
+      cy.getByTestID('template-resource-link')
+        .contains('Bucket')
+        .click()
+      cy.url().should('include', 'load-data/buckets')
+      cy.go('back')
+
+      //telegraf
+      cy.getByTestID('template-resource-link')
+        .contains('Telegraf')
+        .click()
+      cy.url().should('include', 'load-data/telegrafs')
+      cy.go('back')
+
+      //check
+      cy.getByTestID('template-resource-link')
+        .contains('Check')
+        .click()
+      cy.url().should('include', 'alerting/checks')
+      cy.go('back')
+
+      //label
+      cy.getByTestID('template-resource-link')
+        .contains('Label')
+        .click()
+      cy.url().should('include', 'settings/labels')
+      cy.go('back')
+
+      //Dashboard
+      cy.getByTestID('template-resource-link')
+        .contains('Dashboard')
+        .click()
+      cy.url().should('include', 'dashboards')
+      cy.go('back')
+
+      //Notification Endpoint
+      cy.getByTestID('template-resource-link')
+        .contains('NotificationEndpoint')
+        .click()
+      cy.url().should('include', 'alerting')
+      cy.go('back')
+
+      //Notification Rule
+      cy.getByTestID('template-resource-link')
+        .contains('NotificationRule')
+        .click()
+      cy.url().should('include', 'alerting')
+      cy.go('back')
+
+      //Variable
+      cy.getByTestID('template-resource-link')
+        .contains('Variable')
+        .click()
+      cy.url().should('include', 'settings/variables')
+      cy.go('back')
     })
 
     it('Click on source takes you to github', () => {
