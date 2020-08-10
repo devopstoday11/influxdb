@@ -1,4 +1,3 @@
-import { createYield } from "typescript"
 
 describe('Community Templates', () => {
   beforeEach(() => {
@@ -56,7 +55,7 @@ describe('Community Templates', () => {
     //authorization is preventing this from working
     cy.exec(
       'go run ../cmd/influx apply -t eiDTSTOZ_WAgLfw9eK5_JUsVnqeIYWWBY2QHXe6KC-UneLThJBGveTMm8k6_W1cAmswzLEKJTPeqoirvHH5kQg==  -f pkger/testdata/variables.yml'
-    ).then(result => {})
+    ).then(result => {result})
   })
 
   it('Simple Download', () => {
